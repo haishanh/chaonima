@@ -1,0 +1,10 @@
+.*
+!.gitkeep
+!.gitignore
+!.github
+!.gitattributes
+
+logs
+*.log
+
+node_modules

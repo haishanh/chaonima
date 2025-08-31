@@ -1,0 +1,14 @@
+.*
+.DS_Store
+!.gitkeep
+!.gitignore
+!.npmignore
+!.zed
+
+
+logs
+*.log
+
+node_modules
+
+coverage/

@@ -1,0 +1,33 @@
+:global(#chaonima-v2ex-cnt) {
+  padding: 20px 16px;
+  max-height: calc(100vh - 40px);
+  position: sticky;
+  top: 0;
+}
+
+.contentContainer {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.content.content {
+  padding-top: 20px;
+  position: relative;
+  overflow: auto;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.buttonContainer {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
+
+.footer {
+  font-size: 11px;
+  text-align: right;
+}

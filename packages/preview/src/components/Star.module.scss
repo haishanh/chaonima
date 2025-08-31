@@ -1,0 +1,21 @@
+.ai {
+  position: relative;
+  display: inline-flex;
+  .item {
+    display: inline-flex;
+    position: absolute;
+    place-items: center;
+  }
+  .a {
+    right: -14px;
+    top: -12px;
+  }
+  .b {
+    right: 14px;
+    top: -12px;
+  }
+  .c {
+    right: -14px;
+    top: -19px;
+  }
+}
