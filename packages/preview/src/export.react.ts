@@ -1,3 +1,4 @@
+export { ChaonimaLogo } from './components/ChaonimaLogo';
 export { StarAi } from './components/Star';
 export { Button } from './components/StartButton';
 export { appendText } from './ChaonimaBody.signal';
