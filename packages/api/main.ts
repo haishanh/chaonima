@@ -25,7 +25,9 @@ app.get("/api/v2ex/summaries", async (c) => {
   const result = await kv.get<{ summary: string; time: number }>([id]);
   if (!result.value) return c.text("Entry not found", 404);
   // consider 10-minute-old items as stale
-  if (Date.now() - result.value.time > 600_000) return c.text("Entry not found", 404);
+  if (Date.now() - result.value.time > 600_000) {
+    return c.text("Entry not found", 404);
+  }
   return c.text(result.value.summary);
 });
 
@@ -39,6 +41,7 @@ app.post("/api/v2ex/streamGenerateContent", async (c) => {
     "用地道易懂的话总结这篇帖子。",
     "如果有网友评论的话，总结一下他们在讨论什么。",
     "如果网友们在争论的话，概括一下各方的论点。",
+    '你的输出不要包含额外内容 (比如"好的，没问题！我来帮你总结一下。")',
   ].join("\n");
 
   return streamText(c, async (stream) => {
@@ -65,7 +68,10 @@ async function gen(
 ) {
   const gemini = new Gemini({ apiKey });
   const input = Gemini.buildGenerateContentRequestBody(text, instruction);
-  const res = await gemini.streamGenerateContent(input);
+  const res = await gemini.streamGenerateContent(
+    input,
+    "gemini-2.5-flash-preview-09-2025",
+  );
   const aig = Gemini.createAsyncIterableStreamFromGeminiResponse(res);
   for await (const json of aig) {
     const t = json.candidates?.[0]?.content?.parts[0]?.text;
